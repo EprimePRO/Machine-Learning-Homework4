@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/emanu/Documents/School/UTD S20/Machine Learning/HW4/Machine-Learning-Homework4/Naive/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+bits/stdc++.h
+-
+algorithm
+-
+armadillo
+-
+

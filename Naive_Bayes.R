@@ -20,7 +20,7 @@ summary(df)
 
 
 #Split into train and test
-i <- sample(1:nrow(df), 900, replace = FALSE)
+i <- c(1:900)
 train <- df[i,]
 test <- df[-i,]
 
@@ -39,6 +39,7 @@ confusionMatrix(pred, test$survived)
 
 startTime <- proc.time()
 
+df <- train
 #run naive bayes from scratch
 #priors
 apriori <- c(
@@ -67,7 +68,7 @@ lh_sex <- matrix(rep(0,4), ncol=2)
 for (sv in c("0", "1")){
   for (sx in c(1, 2)) {
     lh_sex[as.integer(sv)+1, sx] <- 
-      nrow(df[as.integer(df$sex)==sx & df$survived==sv,]) /
+      nrow(df[as.integer(df$sex)==sx-1 & df$survived==sv,]) /
       count_survived[as.integer(sv)+1]
   }
 }
@@ -94,6 +95,7 @@ calc_age_lh <- function(v, mean_v, var_v){
 
 calc_raw_prob <- function(pclass, sex, age) {
   # pclass=1,2,3  sex=1,2   age=numeric
+  sex <- sex+1
   num_s <- lh_pclass[2, pclass] * lh_sex[2, sex] * apriori[2] *
     calc_age_lh(age, age_mean[2], age_var[2])
   num_p <- lh_pclass[1, pclass] * lh_sex[1, sex] * apriori[1] *
@@ -105,9 +107,8 @@ calc_raw_prob <- function(pclass, sex, age) {
 
 
 #get predicions from 5 test observations
-for (i in 1:5){
-  raw <- calc_raw_prob(test[i,2], as.integer(test[i,4]), test[i,5])
-  print(paste(raw[2], raw[1]))
+for (i in 1:nrow(test)){
+  raw <- calc_raw_prob(test$pclass[i], test$sex[i], test$age[i])
 }
 
 endTime <- proc.time()
