@@ -109,6 +109,7 @@ calc_raw_prob <- function(pclass, sex, age) {
 #get predicions from 5 test observations
 for (i in 1:nrow(test)){
   raw <- calc_raw_prob(test$pclass[i], test$sex[i], test$age[i])
+  print(paste(raw[2], raw[1]))
 }
 
 endTime <- proc.time()

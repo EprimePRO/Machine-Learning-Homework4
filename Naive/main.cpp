@@ -199,7 +199,7 @@ int main(){
     for(auto p:test){
         mat raw = calc_raw_prob(p.pclass, p.sex, p.age, lh_pclass, lh_sex, age_mean_var, apriori);
         //double raw = calc_age_lh(p.age, age_mean_var(0,0), age_mean_var(1,0));
-        //cout << raw << endl;
+        cout << raw << endl;
     }
 
 
