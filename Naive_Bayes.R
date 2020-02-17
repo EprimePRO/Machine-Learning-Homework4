@@ -2,6 +2,9 @@ df <- read.csv("titanic_project.csv")
 
 #make survived a factor
 df$survived <- as.factor(df$survived)
+df$pclass <- as.factor(df$pclass)
+df$sex <- as.factor(df$sex)
+
 
 #load naive bayes
 library(e1071)
@@ -68,7 +71,7 @@ lh_sex <- matrix(rep(0,4), ncol=2)
 for (sv in c("0", "1")){
   for (sx in c(1, 2)) {
     lh_sex[as.integer(sv)+1, sx] <- 
-      nrow(df[as.integer(df$sex)==sx-1 & df$survived==sv,]) /
+      nrow(df[as.integer(df$sex)==sx & df$survived==sv,]) /
       count_survived[as.integer(sv)+1]
   }
 }
@@ -95,7 +98,6 @@ calc_age_lh <- function(v, mean_v, var_v){
 
 calc_raw_prob <- function(pclass, sex, age) {
   # pclass=1,2,3  sex=1,2   age=numeric
-  sex <- sex+1
   num_s <- lh_pclass[2, pclass] * lh_sex[2, sex] * apriori[2] *
     calc_age_lh(age, age_mean[2], age_var[2])
   num_p <- lh_pclass[1, pclass] * lh_sex[1, sex] * apriori[1] *
