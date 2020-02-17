@@ -1,3 +1,0 @@
-C:/Users/emanu/Documents/School/UTD S20/Machine Learning/HW4/Machine-Learning-Homework4/Logistic/cmake-build-debug/CMakeFiles/Logistic.dir
-C:/Users/emanu/Documents/School/UTD S20/Machine Learning/HW4/Machine-Learning-Homework4/Logistic/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/emanu/Documents/School/UTD S20/Machine Learning/HW4/Machine-Learning-Homework4/Logistic/cmake-build-debug/CMakeFiles/rebuild_cache.dir
